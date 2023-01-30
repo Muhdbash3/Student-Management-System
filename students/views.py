@@ -38,7 +38,7 @@ def add(request):
             gpa = new_gpa,
         )
         new_student.save()
-        return render(request, 'student/add.html', {
+        return render(request, 'students/add.html', {
             'form': StudentForm(),
             'success' : True
         })
@@ -53,3 +53,16 @@ def edit(request,id):
     if request.method == "POST":
         student = Student.objects.get(pk=id)
         form = StudentForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return render(request, 'students/edit.html',{
+                'form': form ,
+                'Success':True
+            })
+
+    else:
+        student = Student.objects.get(pk=id)
+        form = StudentForm(instance=student)
+        return render(request, 'students/edit.html',{
+                'form': form ,
+            })
