@@ -3,7 +3,7 @@
 {% block body %}
     <h3 class="text-center m-4">Update student</h3>
     {% if success %}
-    	<div class="alert-success" role="alert">
+    	<div class=" alert alert-success" role="alert">
     		The new student updated successfuly!
     		<a href="{% url 'index' %}" class="alert-link">Go to HomePage</a>
     	</div>
@@ -13,7 +13,7 @@
     			<div class="card bg-light mb-3">
                     <div class="card-header">Update Student Record</div>
                     <div class="card-body">
-                      <form action="{% url 'add' %}" method="POST">
+                      <form  method="POST">
                         {% csrf_token %} 
                         {{ form.as_p }}
                         <button type="submit" class="btn btn-primary">Edit</button>
